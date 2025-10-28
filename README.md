@@ -5,9 +5,14 @@ This repository contains implementations for three hands-on labs and a mini-proj
 ## Table of Contents
 - [Environment Setup](#environment-setup)
 - [Lab 1: Buffer Overflow Exploitation](#lab-1-buffer-overflow-exploitation)
-- [Lab 2: Reverse Engineering with Ghidra](#lab-2-reverse-engineering-with-ghidra)
+- [Lab 2: Reverse Engineering a C++ Binary with Ghidra](#lab-2-reverse-engineering-a-c-binary-with-ghidra)
 - [Lab 3: Educational Keylogger (Windows)](#lab-3-educational-keylogger-windows)
 - [Mini Project: Multi-Threaded Port Scanner](#mini-project-multi-threaded-port-scanner)
+- [Quick Build Reference](#quick-build-reference)
+- [Project Structure](#project-structure)
+- [Deliverables](#deliverables)
+- [Troubleshooting](#troubleshooting)
+- [References](#references)
 
 ---
 
@@ -558,68 +563,5 @@ make all
 # Clean compiled binaries
 make clean
 ```
-
----
-
-## Project Structure
-
-```
-.
-├── Dockerfile              # Docker environment configuration
-├── Makefile               # Build automation
-├── README.md              # This file
-├── lab1.cpp               # Lab 1: Buffer overflow vulnerable program
-├── payload.cpp            # Lab 1: Exploit payload generator
-├── crackme.cpp            # Lab 2: Reverse engineering target
-├── portscan.cpp           # Mini Project: Port scanner
-├── pattern.txt            # Lab 1: Metasploit pattern for offset finding
-└── STR.txt                # Lab 1: Steps to reproduce
-```
-
----
-
-## Deliverables
-
-For complete submission requirements, see the assignment PDF. Each lab and the mini project require:
-
-### Labs 1-2:
-- Lab report (PDF) with explanations, screenshots, and reflective answers
-- Working source code
-- Documentation of methodology
-
-### Mini Project:
-- Well-commented source code (`portscan.cpp`)
-- Build instructions (provided in this README)
-- Screenshots showing successful execution
-- One-page project report covering design decisions, security considerations, testing methodology, and lessons learned
-
----
-
-## Troubleshooting
-
-### Docker Issues
-- **Platform mismatch:** Ensure `DOCKER_DEFAULT_PLATFORM=linux/amd64` is set
-- **Volume mounting:** Verify your path is correct in the `-v` flag
-- **Permission errors:** On Linux, you may need to run with `sudo`
-
-### Compilation Issues
-- **Missing dependencies:** Install build-essential (Linux) or MinGW (Windows)
-- **Thread support:** Ensure `-pthread` flag is used for multi-threaded programs
-- **Winsock errors:** On Windows, link with `-lws2_32`
-
-### Port Scanner Issues
-- **Permission denied:** Some systems require root/admin privileges for certain ports
-- **Connection refused:** Normal for closed ports
-- **Timeout:** Increase timeout if scanning over slow networks
-- **Too many open files:** Reduce the number of threads
-
----
-
-## References
-
-- [Metasploit Pattern Tools](https://github.com/rapid7/metasploit-framework/tree/master/tools/exploit)
-- [Ghidra Documentation](https://ghidra-sre.org/)
-- [POSIX Sockets Guide](https://beej.us/guide/bgnet/)
-- [Winsock2 Documentation](https://docs.microsoft.com/en-us/windows/win32/winsock/)
 
 ---
