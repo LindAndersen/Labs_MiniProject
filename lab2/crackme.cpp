@@ -7,14 +7,14 @@
 
 const std::string password = "secret123";
 const std::string key = "this_is_a_constant_key"; // Key used for XOR encryption
-const size_t BUFFER_SIZE = 64; // Max input length to prevent buffer overflow
+const size_t MAX_BUFFER_SIZE = 64;
 
 int main(int argc, char** argv) {
     std::string out;
     std::string flag = "FLAG{this_is_secret}";
     const size_t flag_len = flag.size();
     std::vector<unsigned char> encrypted(flag_len);
-    char buffer[BUFFER_SIZE];
+    char buffer[MAX_BUFFER_SIZE];
 
     for (size_t i = 0; i < flag_len; ++i) {
         // XOR each character of the flag with the key (repeating the key as necessary)
