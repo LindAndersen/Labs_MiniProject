@@ -220,37 +220,39 @@ g++ -o portscan.exe portscan.cpp -lws2_32 -pthread
 ### Usage
 
 ```sh
-./portscan <target_ip> <start_port> <end_port> [num_threads]
+./portscan <ip> <port|start-end> [--timeout-ms=N] [--threads=M]
 ```
 
 **Examples:**
 
+![Alt text](Screenshots/portscan_screenshot.png "Screenshot")
+
 ```sh
 # Scan localhost ports 1-1000 with 50 threads
-./portscan 127.0.0.1 1 1000 50
+./portscan 127.0.0.1 1-1000 --threads=50
 
 # Scan common ports on a target
-./portscan 192.168.1.1 20 100 20
+./portscan 192.168.1.1 20-100 --threads=20
 
 # Quick scan of web-related ports
-./portscan 127.0.0.1 80 443 10
+./portscan 127.0.0.1 80-443 --threads=10
 ```
 
 ### Parameters
 - `target_ip` - IP address to scan (e.g., 127.0.0.1)
-- `start_port` - Beginning of port range (1-65535)
-- `end_port` - End of port range (1-65535)
-- `num_threads` - (Optional) Number of concurrent threads (default: 50)
+- `start_port` - Beginning of port range (1)
+- `end_port` - End of port range (65535)
+- `timeout` - (Optional) Timeout in milliseconds
+- `threads` - (Optional) Number of concurrent threads (default: 50)
 
 ### Expected Output
 
 ```
-Scanning 127.0.0.1 from port 1 to 1000 using 50 threads...
-Port 22 is OPEN
-Port 80 is OPEN
-Port 443 is OPEN
+Scanning 127.0.0.1 from ports 1-1000 (timeout=1000ms, threads=50)
+[OPEN] 1234
+[OPEN] 4312
 ...
-Scan complete.
+Done.
 ```
 
 ### Technical Implementation
